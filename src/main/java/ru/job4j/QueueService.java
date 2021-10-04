@@ -5,7 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QueueService implements Service {
-    ConcurrentHashMap<String, ConcurrentLinkedQueue<String>> queues = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String,
+            ConcurrentLinkedQueue<String>> queues = new ConcurrentHashMap<>();
 
     @Override
     public Resp process(Req req) {
@@ -15,7 +16,8 @@ public class QueueService implements Service {
             resp = new Resp("Message delivered", 200);
         } else {
             Optional<String> optional = get(req);
-            resp = optional.map(s -> new Resp(s, 200)).orElseGet(() -> new Resp("No content", 200));
+            resp = optional.map(s -> new Resp(s, 200)).
+                    orElseGet(() -> new Resp("No content", 200));
         }
         return resp;
     }

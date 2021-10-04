@@ -18,7 +18,7 @@ public class QueueServiceTest {
                 new Req("POST", "queue", "weather", "temperature", params)
         );
         var result = queueService.process(
-                new Req("GET", "queue", "weather",null, null)
+                new Req("GET", "queue", "weather", null, null)
         );
         assertThat(result.text(), is("11"));
     }
@@ -40,13 +40,13 @@ public class QueueServiceTest {
                 new Req("POST", "queue", "incidents", "event", params)
         );
         Resp result1 = queueService.process(
-                new Req("GET", "queue", "weather",null, null)
+                new Req("GET", "queue", "weather", null, null)
         );
         Resp result2 = queueService.process(
-                new Req("GET", "queue", "dollarRate",null, null)
+                new Req("GET", "queue", "dollarRate", null, null)
         );
         Resp result3 = queueService.process(
-                new Req("GET", "queue", "incidents",null, null)
+                new Req("GET", "queue", "incidents", null, null)
         );
         assertThat(result1.text(), is("10"));
         assertThat(result2.text(), is("73"));
@@ -57,7 +57,7 @@ public class QueueServiceTest {
     public void whenGetQueue() {
         QueueService queueService = new QueueService();
         Resp result = queueService.process(
-                new Req("GET", "queue", "weather",null, null)
+                new Req("GET", "queue", "weather", null, null)
         );
         assertThat(result.text(), is("No content"));
     }

@@ -10,7 +10,8 @@ public class Req {
     private final String key;
     private final Map<String, String> params;
 
-    public Req(String method, String mode, String nameQueue, String key, Map<String, String> params) {
+    public Req(String method, String mode,
+               String nameQueue, String key, Map<String, String> params) {
         this.method = method;
         this.mode = mode;
         this.nameQueue = nameQueue;
